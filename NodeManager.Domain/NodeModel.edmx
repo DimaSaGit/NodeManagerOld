@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="NodeManagerDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="FamilySymbols">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FamilyId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="50" />
+          <Property Name="Scale" Type="int" />
+        </EntityType>
+        <EntityType Name="Nodes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="FilePath" Type="nvarchar(max)" />
+          <Property Name="LastChange" Type="datetime" />
+          <Property Name="Author" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RevitParameters">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SymbolId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" />
+          <Property Name="StorageType" Type="int" />
+        </EntityType>
+        <Association Name="FK_FamilySymbols_Nodes">
+          <End Role="Nodes" Type="Self.Nodes" Multiplicity="0..1" />
+          <End Role="FamilySymbols" Type="Self.FamilySymbols" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nodes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FamilySymbols">
+              <PropertyRef Name="FamilyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RevitParameters_FamilySymbols">
+          <End Role="FamilySymbols" Type="Self.FamilySymbols" Multiplicity="0..1" />
+          <End Role="RevitParameters" Type="Self.RevitParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilySymbols">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RevitParameters">
+              <PropertyRef Name="SymbolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NodeManagerDBModelStoreContainer">
+          <EntitySet Name="FamilySymbols" EntityType="Self.FamilySymbols" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Nodes" EntityType="Self.Nodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RevitParameters" EntityType="Self.RevitParameters" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_FamilySymbols_Nodes" Association="Self.FK_FamilySymbols_Nodes">
+            <End Role="Nodes" EntitySet="Nodes" />
+            <End Role="FamilySymbols" EntitySet="FamilySymbols" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RevitParameters_FamilySymbols" Association="Self.FK_RevitParameters_FamilySymbols">
+            <End Role="FamilySymbols" EntitySet="FamilySymbols" />
+            <End Role="RevitParameters" EntitySet="RevitParameters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NodeManagerDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="FamilySymbol">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FamilyId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Scale" Type="Int32" />
+          <NavigationProperty Name="Node" Relationship="Self.FK_FamilySymbols_Nodes" FromRole="FamilySymbols" ToRole="Nodes" />
+          <NavigationProperty Name="RevitParameters" Relationship="Self.FK_RevitParameters_FamilySymbols" FromRole="FamilySymbols" ToRole="RevitParameters" />
+        </EntityType>
+        <EntityType Name="Node">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastChange" Type="DateTime" Precision="3" />
+          <Property Name="Author" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FamilySymbols" Relationship="Self.FK_FamilySymbols_Nodes" FromRole="Nodes" ToRole="FamilySymbols" />
+        </EntityType>
+        <EntityType Name="RevitParameter">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SymbolId" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StorageType" Type="Int32" />
+          <NavigationProperty Name="FamilySymbol" Relationship="Self.FK_RevitParameters_FamilySymbols" FromRole="RevitParameters" ToRole="FamilySymbols" />
+        </EntityType>
+        <Association Name="FK_FamilySymbols_Nodes">
+          <End Role="Nodes" Type="Self.Node" Multiplicity="0..1" />
+          <End Role="FamilySymbols" Type="Self.FamilySymbol" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Nodes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FamilySymbols">
+              <PropertyRef Name="FamilyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RevitParameters_FamilySymbols">
+          <End Role="FamilySymbols" Type="Self.FamilySymbol" Multiplicity="0..1" />
+          <End Role="RevitParameters" Type="Self.RevitParameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilySymbols">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RevitParameters">
+              <PropertyRef Name="SymbolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NodeManagerDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FamilySymbols" EntityType="Self.FamilySymbol" />
+          <EntitySet Name="Nodes" EntityType="Self.Node" />
+          <EntitySet Name="RevitParameters" EntityType="Self.RevitParameter" />
+          <AssociationSet Name="FK_FamilySymbols_Nodes" Association="Self.FK_FamilySymbols_Nodes">
+            <End Role="Nodes" EntitySet="Nodes" />
+            <End Role="FamilySymbols" EntitySet="FamilySymbols" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RevitParameters_FamilySymbols" Association="Self.FK_RevitParameters_FamilySymbols">
+            <End Role="FamilySymbols" EntitySet="FamilySymbols" />
+            <End Role="RevitParameters" EntitySet="RevitParameters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NodeManagerDBModelStoreContainer" CdmEntityContainer="NodeManagerDBEntities">
+          <EntitySetMapping Name="FamilySymbols">
+            <EntityTypeMapping TypeName="NodeManagerDBModel.FamilySymbol">
+              <MappingFragment StoreEntitySet="FamilySymbols">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FamilyId" ColumnName="FamilyId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Scale" ColumnName="Scale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Nodes">
+            <EntityTypeMapping TypeName="NodeManagerDBModel.Node">
+              <MappingFragment StoreEntitySet="Nodes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+                <ScalarProperty Name="LastChange" ColumnName="LastChange" />
+                <ScalarProperty Name="Author" ColumnName="Author" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RevitParameters">
+            <EntityTypeMapping TypeName="NodeManagerDBModel.RevitParameter">
+              <MappingFragment StoreEntitySet="RevitParameters">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SymbolId" ColumnName="SymbolId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="StorageType" ColumnName="StorageType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
