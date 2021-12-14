@@ -13,5 +13,6 @@ namespace NodeManager.Web.Models
         public Nullable<int> Scale { get; set;}
     
         public virtual Node Node { get; set; }
+        
     }
 }

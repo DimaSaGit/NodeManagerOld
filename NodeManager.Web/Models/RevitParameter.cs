@@ -10,5 +10,6 @@ namespace NodeManager.Web.Models
         public Nullable<int> StorageType { get; set; }
     
         public virtual FamilySymbol FamilySymbol { get; set; }
+        
     }
 }
