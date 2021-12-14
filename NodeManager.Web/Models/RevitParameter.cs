@@ -1,7 +1,6 @@
 namespace NodeManager.Web.Models
 {
     using System;
-    
     public class RevitParameter
     {
         public int Id { get; set; }

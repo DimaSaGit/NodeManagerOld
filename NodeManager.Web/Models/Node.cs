@@ -11,6 +11,5 @@ namespace NodeManager.Web.Models
         public string FilePath { get; set; }
         public Nullable<System.DateTime> LastChange { get; set; }
         public string Author { get; set; }
-    
     }
 }
