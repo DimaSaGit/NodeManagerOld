@@ -49,6 +49,12 @@ namespace NodeManager.Web
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "Nav",
+                    pattern: "{controller=Nav}/{action=Menu}"
+                    );
+                    
+                
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });

@@ -33,7 +33,7 @@ namespace ConsoleApp111
             return db;
         }
 
-        public void XMLToDataBase(XDocument doc)
+        /*public void XMLToDataBase(XDocument doc)
         {
             RevitProject rpj = new RevitProject();
             RevitView rv = new RevitView();
@@ -68,6 +68,6 @@ namespace ConsoleApp111
                     }
                 }
             }
-        }
+        }*/
     }
 }
