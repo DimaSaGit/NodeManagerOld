@@ -5,7 +5,9 @@ namespace NodeManager.Web.Abstract
 {
     public interface INodes
     {
-        IEnumerable<Node> AllNodes { get; }
-            
+        IEnumerable<Node> Nodes { get; }
+        IEnumerable<FamilySymbol> FamilySymbols { get; }
+        IEnumerable<RevitParameter> RevParameters { get; }
+
     }
 }

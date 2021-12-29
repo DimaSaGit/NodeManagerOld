@@ -6,11 +6,17 @@
 
   <ItemGroup>
     <PackageReference Include="EntityFramework" Version="6.4.4" />
+    <PackageReference Include="Microsoft.AspNet.Mvc" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.13" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\NodeManager.Domain\NodeManager.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\Node" />
   </ItemGroup>
 
 </Project>

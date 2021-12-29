@@ -1,13 +1,36 @@
 using Microsoft.AspNetCore.Mvc;
+using NodeManager.Web.Abstract;
+using ConsoleApp111;
+using System.Linq;
+using NodeManager.Web.Models;
+using System.Collections.Generic;
+//using System.Web.Mvc;
 
 namespace NodeManager.Web.Controllers
 {
     public class NavController : Controller
     {
-        // GET
-        public IActionResult Menu()
+        private INodes repository;
+
+        public NavController(INodes repo)
         {
-            return View();
+            repository = repo;
+        }
+        // GET
+        public PartialViewResult Menu(string category = null)
+        {
+            //ViewBag.SelectedCategory = category;
+            FamilySymbol cat = repository.FamilySymbols.FirstOrDefault(x => x.Name == category);
+            IEnumerable<NodeInfo> categories = repository.FamilySymbols
+                .Select(symb => new NodeInfo()
+                {
+                    Node = symb.Node,
+                    IsSelected = category != null ? symb.Node.Id == cat.Id : false
+                })
+                .GroupBy(p => p.Node.Id)
+                .Select(g => g.First())
+                .OrderBy(x => x.Node.Id);
+            return PartialView(categories);
         }
     }
 }

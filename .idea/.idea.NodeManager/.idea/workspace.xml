@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35753da5-7ba1-444a-9d2b-0fc59b3ee856" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/NodeManager.Domain/Form1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NodeManager.Domain/Form1.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.NodeManager/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.NodeManager/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NodeManager.Domain/NodeManager.Domain.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/NodeManager.Domain/NodeManager.Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeManager.Domain/NodeModel.Context.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NodeManager.Domain/NodeModel.Context.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeManager.Domain/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NodeManager.Domain/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeManager.Domain/XMLParser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NodeManager.Domain/XMLParser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeManager.Web/Models/FamilySymbol.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeManager.Web/Models/Node.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeManager.Web/Models/RevitParameter.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NodeManager.Web/Abstract/INodes.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NodeManager.Web/Abstract/INodes.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NodeManager.Web/Controllers/NavController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NodeManager.Web/Controllers/NavController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NodeManager.Web/NodeManager.Web.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/NodeManager.Web/NodeManager.Web.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NodeManager.Web/Startup.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NodeManager.Web/Startup.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NodeManager.Web/Repository/NodeRep.cs" beforeDir="false" afterPath="$PROJECT_DIR$/NodeManager.Web/Repository/NodeRep.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +25,11 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/NodeManager.Web/Abstract/IFamSymbol.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <changedPaths>
-      <option value="$PROJECT_DIR$/NodeManager.Web/Controllers/NavController.cs" />
       <option value="$PROJECT_DIR$/NodeManager.Web/Models/Node.cs" />
       <option value="$PROJECT_DIR$/NodeManager.Web/Models/FamilySymbol.cs" />
       <option value="$PROJECT_DIR$/NodeManager.Web/Models/RevitParameter.cs" />
@@ -48,6 +46,15 @@
       <option value="$PROJECT_DIR$/NodeManager.Web/Repository/RevParamRep.cs" />
       <option value="$PROJECT_DIR$/NodeManager.Domain/OldDB.cs" />
       <option value="$PROJECT_DIR$/NodeManager.Web/Repository/FamParamRep.cs" />
+      <option value="$PROJECT_DIR$/NodeManager.Web/Models/NodeInfo.cs" />
+      <option value="$PROJECT_DIR$/NodeManager.Web/Views/Nav/Menu.cshtml" />
+      <option value="$PROJECT_DIR$/NodeManager.Web/Controllers/NavController.cs" />
+      <option value="$PROJECT_DIR$/NodeManager.Web/Models/PagingInfo.cs" />
+      <option value="$PROJECT_DIR$/NodeManager.Web/Models/NodesViewModel.cs" />
+      <option value="$PROJECT_DIR$/NodeManager.Web/Pages/Node/List.cshtml" />
+      <option value="$PROJECT_DIR$/NodeManager.Web/Models/FamSymbolViewModel.cs" />
+      <option value="$PROJECT_DIR$/NodeManager.Web/Controllers/NodeController.cs" />
+      <option value="$PROJECT_DIR$/NodeManager.Web/Pages/Node/FamSymbol.cshtml" />
     </changedPaths>
   </component>
   <component name="ProjectId" id="22HdJxchXhssS2on5W49TErI6aA" />
@@ -66,6 +73,7 @@
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.NodeManager.Web">
@@ -114,7 +122,11 @@
       <workItem from="1640009781013" duration="5436000" />
       <workItem from="1640172226789" duration="8764000" />
       <workItem from="1640263715784" duration="693000" />
-      <workItem from="1640339737802" duration="2755000" />
+      <workItem from="1640339737802" duration="4579000" />
+      <workItem from="1640541959324" duration="769000" />
+      <workItem from="1640693624591" duration="3026000" />
+      <workItem from="1640709727962" duration="2025000" />
+      <workItem from="1640713543453" duration="4131000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1639499084187</created>
@@ -137,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639499376684</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Добавленны интерфейсы, классы их реализующие">
+      <created>1640345436908</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1640345436908</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +181,7 @@
     <MESSAGE value="1" />
     <MESSAGE value="Added domain model" />
     <MESSAGE value="delete in the wrong branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete in the wrong branch" />
+    <MESSAGE value="Добавленны интерфейсы, классы их реализующие" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавленны интерфейсы, классы их реализующие" />
   </component>
 </project>
